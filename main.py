@@ -21,6 +21,13 @@ class Student:
         else:
             return 'Ошибка'
 
+    def __lt__(self, other):
+        return self.average_score < other.average_score
+    def __gt__(self, other):
+        return self.average_score > other.average_score
+    def __eq__(self, other):
+        return self.average_score == other.average_score
+
     def __str__(self):
         score = []
         for i in self.courses_in_progress:
@@ -51,6 +58,13 @@ class Lecturer(Mentor):
                 score.append(x)
         self.average_score = round(sum(score) / len(score), 2)
         return f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {self.average_score}'
+
+    def __lt__(self, other):
+        return self.average_score < other.average_score
+    def __gt__(self, other):
+        return self.average_score > other.average_score
+    def __eq__(self, other):
+        return self.average_score == other.average_score
 
 
 class Reviewer(Mentor):
@@ -113,3 +127,5 @@ print(student_2)
 print()
 comparison_rate(best_student, student_2)
 comparison_rate(student_2, best_student)
+print()
+print(student_2 > best_student)
